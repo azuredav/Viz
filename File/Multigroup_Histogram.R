@@ -18,3 +18,6 @@ ggplot(birthwt_mod, aes(x = bwt)) +
        caption = 'By Daven, Data Visualzation Course, Tunghai University, 2024') +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke') 
+
+ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
+  geom_histogram(position = "identity", alpha = 0.4) 
