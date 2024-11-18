@@ -2,7 +2,7 @@
 title: "Iris Tutorial"
 author: "Daven"
 format: html
-editor: visual
+
 ---
 
 This R code creates a data visualization of the **Iris dataset** using the `ggplot2` package, with the following features:
