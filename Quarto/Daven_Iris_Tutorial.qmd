@@ -17,7 +17,7 @@ This R code creates a data visualization of the **Iris dataset** using the `ggpl
 library(ggplot2)
 ```
 
--   `ggplot2`: A popular package for creating elegant and customizable visualizations in R.
+-   `ggplot2`: A popular package for creating elegant and customization visualizations in R.
 
 ------------------------------------------------------------------------
 
