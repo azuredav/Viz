@@ -1,0 +1,70 @@
+---
+title: 'Axes'
+author: 'Daven'
+date: '2024/11/25'
+toc: true
+format:
+  html:
+    embed-resources: true
+---
+
+## 1. Box Plot
+
+- Draw a boxplot using `PlantGrowth` dataset.
+- `labs()` function is to add title, axis lables, and caption. 
+
+```{r}
+library(ggplot2)
+
+ggplot(PlantGrowth, aes (x = group, y = weight)) +
+  geom_boxplot() +
+  labs(title = "Group Vs Weight",
+       x = "Group",
+       y = "Weight",
+       caption = "By Daven, DV, THU, 2024")+
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+## 2. Swapped X and Y Axis
+
+- Use `coord_flip()` to swapped the X and Y Axis lable
+
+```{r}
+library(ggplot2)
+
+ggplot(PlantGrowth, aes (x = group, y = weight)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(title = "Weight Vs Group",
+       x = 'Group',
+       y = 'Weight',
+       caption = "By Daven, DV, THU, 2024")+
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+## 3. Arrange 2 plots side by side
+```{r}
+#| warning: false
+library(ggplot2)
+library(gridExtra)
+
+p1 <- ggplot(PlantGrowth, aes (x = group, y = weight)) +
+  geom_boxplot() +
+  labs(title = "Group Vs Weight",
+       x = "Group",
+       y = "Weight",
+       caption = "By Daven, DV, THU, 2024") +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+
+p2 <- ggplot(PlantGrowth, aes (x = group, y = weight)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(title = "Weight Vs Group",
+       x = 'Group',
+       y = 'Weight',
+       caption = "By Daven, DV, THU, 2024") +
+  theme(plot.title = element_text(hjust = 0.5, size = 20)) 
+  
+grid.arrange(p1, p2, ncol = 2,
+               top = 'Swap X and Y axes')
+```
+
