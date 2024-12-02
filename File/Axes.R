@@ -18,6 +18,7 @@ p1 <- ggplot(PlantGrowth, aes (x = group, y = weight)) +
 p2 <- ggplot(PlantGrowth, aes (x = group, y = weight)) +
   geom_boxplot() +
   coord_flip() +
+  ylim(0, max(PlantGrowth$weight)) +
   labs(title = "Weight Vs Group",
        x = 'Group',
        y = 'Weight',
