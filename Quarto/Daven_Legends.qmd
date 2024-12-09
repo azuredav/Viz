@@ -10,7 +10,7 @@ format:
 
 ## Basic Box Plot
 
-- `library(ggplot2)`: This loads the ggplot2 library.
+- `library(ggplot2)`: This loads the `ggplot2` library.
 - `ggplot(PlantGrowth, aes(x = group, y = weight))`:
     - Uses the built-in `PlantGrowth` dataset
     - Creates a plot with `group` on the x-axis and `weight` on the y-axis
@@ -31,10 +31,11 @@ ggplot(PlantGrowth, aes (x = group, y = weight)) +
 
 ## Add a Legend
 
-- `library(gridExtra)`: this load the gridExtra library
+- `library(gridExtra)`: this load the `gridExtra` library
 - `fill`: to add color inside the area of the box
 - `color`: to add color around the area of the box
 - `grid.arrange()`: used to arrange multiple grid-based plots on a single page
+- `ncol`: used to determine the number of column within the box plot chart
 - `top`: Adds title into the box plot chart
 - `bottom`: Adds caption into the box plot chart
 
