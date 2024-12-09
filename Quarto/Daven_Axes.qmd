@@ -74,6 +74,7 @@ p2 <- ggplot(PlantGrowth, aes (x = group, y = weight)) +
 grid.arrange(p1, p2, ncol = 2,
                top = 'Swap X and Y axes')
 ```
+
 ## 4. Setting the Range of a Continuous Axis
 - `ylim()`: Sets the limits of the y-axis.
 ```{r}

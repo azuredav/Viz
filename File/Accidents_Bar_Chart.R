@@ -6,6 +6,8 @@
 library(gcookbook)
 library(ggplot2)
 
+df <- read.csv('Accidents.csv')
+
 ggplot(df, aes(x = Year, y = Death)) +
   geom_col() +
   labs(title = 'Accidents: Death',

@@ -1,0 +1,370 @@
+---
+title: 'Data Visualization Analysis'
+author: 'Daven'
+date: '2024/01/01'
+toc: true
+number-sections: true
+format:
+  html:
+    embed-resources: true
+---
+
+## Introduction
+
+This tutorial is designed to help you learn data visualization analysis by providing simple and useful information in a way that is easy to follow and understand.
+
+## Preparation
+
+In order to draw a chart, we need to include the required packages for visualization and dataset. For example, `ggplot2` package is for drawing charts and `gcookbook` is for using `pg_mean` dataset.
+
+```{r}
+library(ggplot2)
+library(gcookbook)
+```
+
+## Bar chart
+
+In this section, we will draw a bar chart using `pg_mean` dataset. The dataset has two columns: `group`, `weight`.
+
+```{r}
+pg_mean
+```
+
+This dataset compares the weight across three groups:
+
+- `ctrl`: Control group (baseline, weight = 5.032).
+- `trt1`: Treatment 1 group (weight = 4.661).
+- `trt2`: Treatment 2 group (weight = 5.526).
+
+```{r}
+ggplot(pg_mean, aes(x = group, y = weight)) +
+  geom_col()
+```
+
+It initializes a ggplot with the dataset `pg_mean`.
+
+`aes(x = group, y = weight)` specifies the aesthetics:
+
+- `x = group`: Assign the `group` variable to the x-axis (categorical data, such as `ctrl, trt1, trt2`).
+- `y = weight`: Assign the `weight` variable to the y-axis (numerical data).
+
+`geom_col()`:
+
+- Adds a column geometry to the plot.
+- `geom_col()` creates bars where the height of each bar corresponds to the value of weight for each group.
+
+
+## Bar chart with color
+
+We can expand further our bar chart by adding colors to its shape and outline to add more visualization into it.
+However, first we need to include `gcookbook` for using `pg_mean` dataset and `ggplot2` for drawing the chart.
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+```
+
+Here we need to initializes `pg_mean` dataset by using `ggplot()` within our code. 
+
+As we demonstrate before at [Bar chart], `aes(x = group, y = weight)` specifies the aesthetics:
+
+- `x = group`: Assign the `group` variable to the x-axis (categorical data, such as `ctrl, trt1, trt2`).
+- `y = weight`: Assign the `weight` variable to the y-axis (numerical data).
+
+`geom_col()`:
+
+- Adds a column geometry to the plot.
+- `geom_col()` creates bars where the height of each bar corresponds to the value of weight for each group.
+
+```{r}
+#| warning: false
+ggplot(pg_mean, aes(x = group, y = weight)) +
+  geom_col(fill = 'cornsilk', colour = 'blue', size = .2) +
+  labs(title = 'Bar Chart w/ Color',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `geom_col()` command, `fill = "cornsilk", colour = "blue", size = .2` specifies the following:
+
+- `fill = "cornsilk"`: Assign color to the bar's area using the color `"cornsilk"`.
+- `colour = "blue"`: Assign color to the bar's outline using the color `"blue"`.
+- `size = .2`: Specified the size of the outline for all the bar within the chart.
+
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+- Used to customized axis labels and legend titles.
+- To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+- Used to give plots a consistent customized look.
+- Positioning your chart `title` and adjusting the `size` of your chart font
+
+```{r, eval = FALSE}
+labs(title = 'Bar Chart w/ Color',
+       caption = 'By Daven, DV, THU, 2024')
+```
+
+Inside `labs()`:
+
+- `title = 'Bar Chart w/ Color'`: To add "Bar Chart w/ Color" as the `title`.
+- `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `theme()`:
+
+- `plot.title = element_text()`: To customize the title chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+- `hjust = 0.5`: Positioning your chart `title` in the middle.
+- `size = 20`: Sizing your title text to `size` 20.
+
+```{r, eval = FALSE}
+library(gcookbook)
+library(ggplot2)
+
+ggplot(pg_mean, aes(x = group, y = weight)) +
+  geom_col(fill = 'cornsilk', colour = 'blue', size = .2) +
+  labs(title = 'Bar Chart',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+For a better view of the overall explanation above, this is the complete structure on how the codes given above should be arranged. 
+
+*Note: You can use different colors on chart's area and outline like `'red'` or `'green'` as well as the size of your chart title and positioning `(hjust = 1, size = 15)`.*
+
+## Line chart
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+```
+
+```{r}
+ggplot(BOD, aes(x = Time, y = demand)) +
+  geom_line() +
+  labs(title = 'Line Chart',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+```{r, eval = FALSE}
+library(gcookbook)
+library(ggplot2)
+
+ggplot(BOD, aes(x = Time, y = demand)) +
+  geom_line() +
+  labs(title = 'Line Chart',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+## Histogram
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+#| warning: false
+ggplot(diamonds, aes (x = carat)) +
+  geom_histogram() +
+  labs(title = 'Histogram Chart',
+       caption = 'By Daven, DV, THU') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+
+```{r, eval = FALSE}
+library(ggplot2)
+
+ggplot(diamonds, aes (x = carat)) +
+  geom_histogram() +
+  labs(title = 'Histogram Chart',
+       caption = 'By Daven, DV, THU') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+## Correlation chart
+
+## Correlation chart: Color by group
+
+## Multigroup histogram
+
+```{r}
+#| warning: false
+library(ggplot2)
+library(MASS)
+library(tidyverse)
+```
+
+```{r}
+birthwt_mod <- birthwt
+
+birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke')
+```
+
+```{r}
+#| warning: false
+ggplot(birthwt_mod, aes(x = bwt)) +
+  geom_histogram(fill = "white", colour = "black") +
+  facet_grid( . ~ smoke) +
+  labs(title = "Birth Weight",
+       x = 'Birth Weight',
+       y = 'Count',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+```{r}
+#| warning: false
+ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
+  geom_histogram(position = "identity", alpha = 0.4) +
+  labs(title = "Birth Weight",
+       x = 'Birth Weight',
+       y = 'Count',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20)) 
+```
+
+```{r, eval = FALSE}
+library(ggplot2)
+library(MASS)
+library(tidyverse)
+
+birthwt_mod <- birthwt
+
+birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke') 
+
+ggplot(birthwt_mod, aes(x = bwt)) +
+  geom_histogram(fill = "white", colour = "black") +
+  facet_grid( . ~ smoke) +
+  labs(title = "Birth Weight",
+       x = 'Birth Weight',
+       y = 'Count',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+
+ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
+  geom_histogram(position = "identity", alpha = 0.4) +
+  labs(title = "Birth Weight",
+       x = 'Birth Weight',
+       y = 'Count',
+       caption = 'By By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20)) 
+
+```
+
+## Density chart
+
+```{r}
+#| warning: false
+library(gcookbook)
+library(ggplot2)
+library(tidyr)
+```
+
+```{r}
+#| warning: false
+ggplot(faithful, aes(x = waiting, y = ..density..)) +
+  geom_density(fill = "blue", alpha = .2) +
+  xlim(35, 105) +
+  labs(title = "Density Chart",
+       x = 'Waiting',
+       y = 'Density',
+       caption = 'By By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+```{r,eval = FALSE}
+library(gcookbook)
+library(ggplot2)
+library(tidyr)
+
+ggplot(faithful, aes(x = waiting, y = ..density..)) +
+  geom_density(fill = "blue", alpha = .2) +
+  xlim(35, 105) +
+  labs(title = "Density Chart",
+       x = 'Waiting',
+       y = 'Density',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+## Histogram and Density chart
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+library(tidyr)
+```
+
+```{r}
+#| warning: false
+ggplot(faithful, aes(x = waiting, y = ..density..)) +
+  geom_histogram(fill = "cornsilk", colour = "grey60", size = .2) +
+  geom_density(fill = "blue", alpha = .2) +
+  xlim(35, 105) +
+  labs(title = "Density Chart",
+       x = 'Waiting',
+       y = 'Density',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+```{r, eval = FALSE}
+library(gcookbook)
+library(ggplot2)
+library(tidyr)
+
+ggplot(faithful, aes(x = waiting, y = ..density..)) +
+  geom_histogram(fill = "cornsilk", colour = "grey60", size = .2) +
+  geom_density(fill = "blue", alpha = .2) +
+  xlim(35, 105) +
+  labs(title = "Density Chart",
+       x = 'Waiting',
+       y = 'Density',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+## Box plot
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+```
+
+```{r}
+ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
+  geom_boxplot() +
+  labs(title = "Boxplot with ggplot",
+       x = 'Supp + Dose',
+       y = 'Length',
+       fill = "Smoking Status",
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+```{r, eval = FALSE}
+library(gcookbook)
+library(ggplot2)
+
+ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
+  geom_boxplot() +
+  labs(title = "Boxplot with ggplot",
+       x = 'Supp + Dose',
+       y = 'Length',
+       fill = "Smoking Status",
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
