@@ -33,7 +33,7 @@ ggplot(PlantGrowth, aes (x = group, y = weight)) +
 
 - `library(gridExtra)`: this load the `gridExtra` library
 - `fill`: to add color inside the area of the box
-- `color`: to add color around the area of the box
+- `color`: to add color around the outline of the box
 - `grid.arrange()`: used to arrange multiple grid-based plots on a single page
 - `ncol`: used to determine the number of column within the box plot chart
 - `top`: Adds title into the box plot chart
