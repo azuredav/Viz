@@ -4,7 +4,7 @@ author: "Daven"
 toc: true
 number-sections: true
 format:
-  html:
+  pdf:
     embed-resources: true
 ---
 
