@@ -68,7 +68,8 @@ Using the same chart in [Basic Box Plot], The legend is removed by `guides(fill 
 ggplot(PlantGrowth, aes(x = group, y = weight, fill = group)) + 
   geom_boxplot() +
   guides(fill = FALSE) +
-  ggtitle('Remove Legend') +
+  labs(title = 'Basic Box Plot',
+       caption = 'By Daven, DV, THU, 2024') +
   theme(plot.title = element_text(hjust=0.5))
 ```
 
@@ -84,7 +85,8 @@ Using the same chart in [Basic Box Plot], we'll change the box plot's `fill` usi
 ggplot(PlantGrowth, aes(x = group, y = weight, fill = group)) +
   geom_boxplot() +
   scale_fill_brewer(palette = "Pastel2") +
-  ggtitle('Change Color of Legend') +
+  labs(title = 'Basic Box Plot',
+       caption = 'By Daven, DV, THU, 2024') +
   theme(plot.title = element_text(hjust=0.5))
 ```
 
@@ -114,13 +116,14 @@ p1 <- ggplot(PlantGrowth, aes(x = group, y = weight, fill = group)) +
   geom_boxplot() +
   scale_fill_brewer(palette = "Pastel2") +
   ggtitle('Change Color of Legend') +
-  theme(plot.title = element_text(hjust=0.5),
+  theme(plot.title = element_text(hjust = 0.5),
         legend.position = 'top')
 p2 <- p1 + theme(legend.position = 'bottom')
 p3 <- p1 + theme(legend.position = 'left')
 p4 <- p1 + theme(legend.position = 'right')
 
 grid.arrange(p1, p2, p3, p4, ncol=2,
-             top='Chainging Position of Legend')
+             top = 'Changing Position of Legend',
+             bottom = 'Daven, DV, THU 2024')
 ```
 
