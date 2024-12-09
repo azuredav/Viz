@@ -29,3 +29,30 @@ ggplot(PlantGrowth, aes (x = group, y = weight)) +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
+## Add a Legend
+
+- `library(gridExtra)`: this load the gridExtra library
+- `fill`: to add color inside the area of the box
+- `color`: to add color around the area of the box
+- `grid.arrange()`: used to arrange multiple grid-based plots on a single page
+- `top`: Adds title into the box plot chart
+- `bottom`: Adds caption into the box plot chart
+
+```{r}
+#| warning: false
+library(ggplot2)
+library(gridExtra)
+
+p1 <- ggplot(PlantGrowth, aes(x = group, y = weight)) + 
+  geom_boxplot()
+
+p2 <- ggplot(PlantGrowth, aes(x = group, y = weight, fill = group)) + 
+  geom_boxplot()
+
+p3 <- ggplot(PlantGrowth, aes(x = group, y = weight, color = group)) + 
+  geom_boxplot()
+
+grid.arrange(p1, p2, p3, ncol = 3, top = 'Add Legend', 
+             bottom = 'Daven, DV, THU 2024')
+```
+
