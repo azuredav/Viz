@@ -5,7 +5,7 @@ date: '2024/12/20'
 toc: true
 number-sections: true
 format:
-  pdf:
+  html:
     embed-resources: true
 ---
 
@@ -424,14 +424,14 @@ For a better view of the overall explanation above, this is the complete structu
 
 ## Correlation chart: Color by group
 
-
+Using the same dataset in [Correlation Chart] we can expand further our bar chart by adding colors to the dots to add more visualization into it.
 
 ```{r}
 library(gcookbook)
 library(ggplot2)
 ```
 
-Using the same dataset in [Correlation Chart] we can expand further our bar chart by adding colors to the dots to add more visualization into it. 
+Here we need to initialize the `heighweight` dataset using `gcookbook` library.
 
 ```{r}
 heightweight
@@ -489,7 +489,7 @@ Inside `labs()`:
 - `y = 'Height (Inch)`: Assign `y = 'Height (Inch)` as the y-axis label.
 -   `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
 
-```{r}
+```{r, eval = FALSE}
 theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
