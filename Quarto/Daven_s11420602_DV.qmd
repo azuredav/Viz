@@ -1,11 +1,11 @@
 ---
 title: 'Data Visualization Analysis'
 author: 'Daven'
-date: '2024/01/01'
+date: '2024/12/20'
 toc: true
 number-sections: true
 format:
-  html:
+  pdf:
     embed-resources: true
 ---
 
@@ -32,9 +32,9 @@ pg_mean
 
 This dataset compares the weight across three groups:
 
-- `ctrl`: Control group (baseline, weight = 5.032).
-- `trt1`: Treatment 1 group (weight = 4.661).
-- `trt2`: Treatment 2 group (weight = 5.526).
+-   `ctrl`: Control group (baseline, weight = 5.032).
+-   `trt1`: Treatment 1 group (weight = 4.661).
+-   `trt2`: Treatment 2 group (weight = 5.526).
 
 ```{r}
 ggplot(pg_mean, aes(x = group, y = weight)) +
@@ -45,63 +45,70 @@ It initializes a ggplot with the dataset `pg_mean`.
 
 `aes(x = group, y = weight)` specifies the aesthetics:
 
-- `x = group`: Assign the `group` variable to the x-axis (categorical data, such as `ctrl, trt1, trt2`).
-- `y = weight`: Assign the `weight` variable to the y-axis (numerical data).
+-   `x = group`: Assign the `group` variable to the x-axis (categorical data, such as `ctrl, trt1, trt2`).
+-   `y = weight`: Assign the `weight` variable to the y-axis (numerical data).
 
 `geom_col()`:
 
-- Adds a column geometry to the plot.
-- `geom_col()` creates bars where the height of each bar corresponds to the value of weight for each group.
-
+-   Adds a column geometry to the plot.
+-   `geom_col()` creates bars where the height of each bar corresponds to the value of weight for each group.
 
 ## Bar chart with color
 
-We can expand further our bar chart by adding colors to its shape and outline to add more visualization into it.
-However, first we need to include `gcookbook` for using `pg_mean` dataset and `ggplot2` for drawing the chart.
+We can expand further our bar chart by adding colors to its shape and outline to add more visualization into it. However, first we need to include `gcookbook` for using `pg_mean` dataset and `ggplot2` for drawing the chart.
 
 ```{r}
 library(gcookbook)
 library(ggplot2)
 ```
 
-Here we need to initializes `pg_mean` dataset by using `ggplot()` within our code. 
+Here we need to initializes `pg_mean` dataset by using `gcookbook` library within our code.
 
-As we demonstrate before at [Bar chart], `aes(x = group, y = weight)` specifies the aesthetics:
+```{r}
+pg_mean
+```
 
-- `x = group`: Assign the `group` variable to the x-axis (categorical data, such as `ctrl, trt1, trt2`).
-- `y = weight`: Assign the `weight` variable to the y-axis (numerical data).
-
-`geom_col()`:
-
-- Adds a column geometry to the plot.
-- `geom_col()` creates bars where the height of each bar corresponds to the value of weight for each group.
+A quick preview of `pg_mean` dataset.
 
 ```{r}
 #| warning: false
 ggplot(pg_mean, aes(x = group, y = weight)) +
-  geom_col(fill = 'cornsilk', colour = 'blue', size = .2) +
-  labs(title = 'Bar Chart w/ Color',
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
+  geom_col(fill = 'cornsilk', colour = 'blue', size = .2) 
 ```
+
+As we demonstrate before at [Bar chart], `aes(x = group, y = weight)` specifies the aesthetics:
+
+-   `x = group`: Assign the `group` variable to the x-axis (categorical data, such as `ctrl, trt1, trt2`).
+-   `y = weight`: Assign the `weight` variable to the y-axis (numerical data).
+
+`geom_col()`:
+
+-   Adds a column geometry to the plot.
+-   `geom_col()` creates bars where the height of each bar corresponds to the value of weight for each group.
 
 Inside `geom_col()` command, `fill = "cornsilk", colour = "blue", size = .2` specifies the following:
 
-- `fill = "cornsilk"`: Assign color to the bar's area using the color `"cornsilk"`.
-- `colour = "blue"`: Assign color to the bar's outline using the color `"blue"`.
-- `size = .2`: Specified the size of the outline for all the bar within the chart.
+-   `fill = "cornsilk"`: Assign color to the bar's area using the color `"cornsilk"`.
+-   `colour = "blue"`: Assign color to the bar's outline using the color `"blue"`.
+-   `size = .2`: Specified the size of the outline for all the bar within the chart.
+
+```{r, eval = FALSE}
+labs(title = 'Bar Chart w/ Color',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
 
 To add more details on your chart, we can add `labs()` and `theme()` into our codes.
 
 `labs()`:
 
-- Used to customized axis labels and legend titles.
-- To add `title` and `caption` unto the chart.
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
 
 `theme()`:
 
-- Used to give plots a consistent customized look.
-- Positioning your chart `title` and adjusting the `size` of your chart font
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font
 
 ```{r, eval = FALSE}
 labs(title = 'Bar Chart w/ Color',
@@ -110,8 +117,8 @@ labs(title = 'Bar Chart w/ Color',
 
 Inside `labs()`:
 
-- `title = 'Bar Chart w/ Color'`: To add "Bar Chart w/ Color" as the `title`.
-- `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+-   `title = 'Bar Chart w/ Color'`: To add "Bar Chart w/ Color" as the `title`.
+-   `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
 
 ```{r, eval = FALSE}
 theme(plot.title = element_text(hjust = 0.5, size = 20))
@@ -119,14 +126,15 @@ theme(plot.title = element_text(hjust = 0.5, size = 20))
 
 Inside `theme()`:
 
-- `plot.title = element_text()`: To customize the title chart to your desire output.
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
 
 Inside `plot.title = element_text()`:
 
-- `hjust = 0.5`: Positioning your chart `title` in the middle.
-- `size = 20`: Sizing your title text to `size` 20.
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
 
-```{r, eval = FALSE}
+```{r}
+#| warning: false
 library(gcookbook)
 library(ggplot2)
 
@@ -137,26 +145,85 @@ ggplot(pg_mean, aes(x = group, y = weight)) +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
-For a better view of the overall explanation above, this is the complete structure on how the codes given above should be arranged. 
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
 
 *Note: You can use different colors on chart's area and outline like `'red'` or `'green'` as well as the size of your chart title and positioning `(hjust = 1, size = 15)`.*
 
 ## Line chart
 
+Using the same [Preparation], we'll be using the same library which is `gcookbook` and `ggplot2` library.
+
 ```{r}
 library(gcookbook)
 library(ggplot2)
 ```
 
+Here we need to initializes `BOD` dataset by using `gcookbook()` library within our code.
+
+```{r}
+BOD
+```
+
+A quick preview of `BOD` dataset.
+
 ```{r}
 ggplot(BOD, aes(x = Time, y = demand)) +
-  geom_line() +
-  labs(title = 'Line Chart',
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
+  geom_line() 
 ```
+
+In this part of chart, `aes(x = Time, y = demand)` specifies the aesthetics:
+
+-   `x = Time`: Assign the `Time` variable to the x-axis.
+-   `y = demand`: Assign the \`demand variable to the y-axis (numerical data).
+
+`geom_line`:
+
+-   Adds a line geometry to the plot.
+-   `geom_line` creates lines that connect data points over a continuous variable.
 
 ```{r, eval = FALSE}
+labs(title = 'Line Chart',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
+
+```{r, eval = FALSE}
+labs(title = 'Line Chart',
+       caption = 'By Daven, DV, THU, 2024')
+```
+
+Inside `labs()`:
+
+-   `title = 'Line Chart'`: To add "Line Chart" as the `title`.
+-   `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
+
+```{r}
+#| warning: false
 library(gcookbook)
 library(ggplot2)
 
@@ -166,24 +233,86 @@ ggplot(BOD, aes(x = Time, y = demand)) +
        caption = 'By Daven, DV, THU, 2024') +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
+
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different size of your chart title and positioning `(hjust = 1, size = 15)`.*
 
 ## Histogram
 
+In this part we'll be drawing the `diamonds` dataset as a histogram chart.
+
 ```{r}
 library(ggplot2)
 ```
+
+To start, we'll be only using the `gcookbook` library to use the `diamonds` dataset.
+
+```{r}
+#| warning: false
+diamonds
+```
+
+A quick preview of the `diamonds` dataset.
 
 ```{r}
 #| warning: false
 ggplot(diamonds, aes (x = carat)) +
-  geom_histogram() +
-  labs(title = 'Histogram Chart',
+  geom_histogram() 
+```
+
+in this part of chart, `aes (x = carat)`specifies the aesthetics:
+
+-   `x = carat`: Assign the `carat` variable to the x-axis.
+
+`geom_histogram()`:
+
+- Adds a frequency of column geometry similar to a bar to the plot.
+- `geom_histogram()` visualizes the distribution of a continuous variable by dividing it into bins.
+
+```{r, eval = FALSE}
+labs(title = 'Histogram Chart',
        caption = 'By Daven, DV, THU') +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
 
 ```{r, eval = FALSE}
+labs(title = 'Histogram Chart',
+       caption = 'By Daven, DV, THU')
+```
+
+Inside `labs()`:
+
+-   `title = 'Histogram Chart'`: To add "Histogram Chart" as the `title`.
+-   `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
+
+```{r}
+#| warning: false
 library(ggplot2)
 
 ggplot(diamonds, aes (x = carat)) +
@@ -193,11 +322,206 @@ ggplot(diamonds, aes (x = carat)) +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different size of your chart title and positioning `(hjust = 1, size = 15)`.*
+
 ## Correlation chart
+
+In this part, we're going to make correlation/scatter chart using `heightweight` dataset.
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+```
+
+Here we need to initialize the `heighweight` dataset using `gcookbook` library.
+
+```{r}
+heightweight
+```
+
+A quick preview of `heightweight` dataset.
+
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn)) +
+  geom_point()
+```
+
+In this part of chart, `aes(x = ageYear, y = heightIn` specifies the aesthetics:
+
+- `x = ageYear`: Assign `ageYear` as the x-axis label.
+- `y = heightIn`: Assign `heightIn`as the y-axis label.
+
+`geom_point()`:
+
+- Adds multiple dots to the plots.
+- `geom_point()` adds a layer of points to your plot, which creates a scatterplot.
+
+```{r, eval = FALSE}
+labs(title = "Age and Height",
+     x = 'Age (Year)',
+     y = 'Height (Inch)',
+     caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
+
+```{r, eval = FALSE}
+labs(title = "Age and Height by Gender",
+     x = 'Age (Year)',
+     y = 'Height (Inch)',
+     caption = 'By Daven, DV, THU, 2024')
+```
+
+Inside `labs()`:
+
+-   `title = 'Histogram Chart'`: To add "Histogram Chart" as the `title`.
+- `x = 'Age (Year)'`: Assign `'Age (Year)'` as the x-axis label.
+- `y = 'Height (Inch)`: Assign `y = 'Height (Inch)` as the y-axis label.
+-   `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+
+ggplot(heightweight, aes(x = ageYear, y = heightIn)) +
+  geom_point() +
+  labs(title = "Age and Height",
+       x = 'Age (Year)',
+       y = 'Height (Inch)',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different size of your chart title and positioning `(hjust = 1, size = 15)`.*
 
 ## Correlation chart: Color by group
 
+
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+```
+
+Using the same dataset in [Correlation Chart] we can expand further our bar chart by adding colors to the dots to add more visualization into it. 
+
+```{r}
+heightweight
+```
+
+A quick preview of `heightweight` dataset.
+
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn, color = sex)) +
+  geom_point()
+```
+
+In this part of chart, `aes(x = ageYear, y = heightIn, color = sex)` specifies the aesthetics:
+
+- `x = ageYear`: Assign `ageYear` as the x-axis label.
+- `y = heightIn`: Assign `heightIn`as the y-axis label.
+- `color = sex`: Assign `color` to `sex` (male, female).
+
+`geom_point()`:
+
+- Adds multiple dots to the plots.
+- `geom_point()` adds a layer of points to your plot, which creates a scatterplot.
+
+```{r, eval = FALSE}
+labs(title = "Age and Height by Gender",
+       x = 'Age (Year)',
+       y = 'Height (Inch)',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
+
+```{r, eval = FALSE}
+labs(title = "Age and Height by Gender",
+       x = 'Age (Year)',
+       y = 'Height (Inch)',
+       caption = 'By Daven, DV, THU, 2024')
+```
+
+Inside `labs()`:
+
+-   `title = 'Histogram Chart'`: To add "Histogram Chart" as the `title`.
+- `x = 'Age (Year)'`: Assign `'Age (Year)'` as the x-axis label.
+- `y = 'Height (Inch)`: Assign `y = 'Height (Inch)` as the y-axis label.
+-   `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
+
+```{r}
+library(gcookbook)
+library(ggplot2)
+
+ggplot(heightweight, aes(x = ageYear, y = heightIn, color = sex)) +
+  geom_point() +
+  labs(title = "Age and Height by Gender",
+       x = 'Age (Year)',
+       y = 'Height (Inch)',
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different size of your chart title and positioning `(hjust = 1, size = 15)`.*
+
 ## Multigroup histogram
+
+Similar to [Histogram], in this part we'll be combining 2 different `group` into 1 singular chart.
 
 ```{r}
 #| warning: false
@@ -206,36 +530,106 @@ library(MASS)
 library(tidyverse)
 ```
 
+Here, we need to initialize the `birthwt` dataset by using the `MASS` library and `tidyverse` library to combine the 2 separate chart into 1 chart.
+
+```{r}
+birthwt
+```
+
+A quick preview of the `birthwt` dataset.
+
 ```{r}
 birthwt_mod <- birthwt
 
 birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke')
 ```
 
-```{r}
-#| warning: false
-ggplot(birthwt_mod, aes(x = bwt)) +
-  geom_histogram(fill = "white", colour = "black") +
-  facet_grid( . ~ smoke) +
-  labs(title = "Birth Weight",
-       x = 'Birth Weight',
-       y = 'Count',
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
-```
+Before proceeding we need to make another copy the dataset make some modification into it.
 
-```{r}
+`birthwt_mod <- birthwt`:
+
+- This to make a copy of the original dataset, so any modification will go to `birthwt_mod`.
+
+`recode_factor`:
+
+- Converts or modifies the `smoke` variable to a factor (categorical variable).
+- Making the values are interpreted as categories instead of numeric.
+
+`birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke'`:
+
+- Values in `smoke` that are `0` are replaced with the label `'No Smoke'`.
+- Values in `smoke` that are `1` are replaced with the label `'Smoke'`.
+
+```{r, eval = FALSE}
 #| warning: false
 ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
-  geom_histogram(position = "identity", alpha = 0.4) +
-  labs(title = "Birth Weight",
+  geom_histogram(position = "identity", alpha = 0.4) 
+```
+
+In this part of chart, `birthwt_mod, aes(x = bwt, fill = smoke)` specifies the aesthetics:
+
+- `x = bwt`: Assign `bwt` variable to the x-axis. 
+- `fill = smoke`: Assign color based on the `smoke` variable ('No Smoke' and 'Smoke').
+
+`geom_histogram`:
+
+- Adds a frequency of column geometry similar to a bar to the plot.
+- `geom_histogram()` visualizes the distribution of a continuous variable by dividing it into bins.
+
+`position = "identity", alpha = 0.4`:
+
+- `position = "identity"`: Overlays the bars for both groups ('No Smoke' and 'Smoke'). 
+- `alpha = 0.4`: Sets the transparency level for the bars to `0.4`
+
+```{r, eval = FALSE}
+labs(title = "Birth Weight",
        x = 'Birth Weight',
        y = 'Count',
-       caption = 'By Daven, DV, THU, 2024') +
+       caption = 'By By Daven, DV, THU, 2024') +
   theme(plot.title = element_text(hjust = 0.5, size = 20)) 
 ```
 
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
+
 ```{r, eval = FALSE}
+labs(title = "Birth Weight",
+       x = 'Birth Weight',
+       y = 'Count',
+       caption = 'By By Daven, DV, THU, 2024')
+```
+
+Inside `labs()`:
+
+- `title = 'Birth Weight'`: To add "Birth Weight" as the `title`.
+- `x = 'Birth Weight'`: Assign `'Birth Weight'` as the x-axis label.
+- `y = 'Count'`: Assign `'Count'` as the y-axis label.
+- `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20)) 
+```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
+
+```{r}
+#| warning: false
 library(ggplot2)
 library(MASS)
 library(tidyverse)
@@ -244,15 +638,6 @@ birthwt_mod <- birthwt
 
 birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke') 
 
-ggplot(birthwt_mod, aes(x = bwt)) +
-  geom_histogram(fill = "white", colour = "black") +
-  facet_grid( . ~ smoke) +
-  labs(title = "Birth Weight",
-       x = 'Birth Weight',
-       y = 'Count',
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
-
 ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
   geom_histogram(position = "identity", alpha = 0.4) +
   labs(title = "Birth Weight",
@@ -263,70 +648,108 @@ ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
 
 ```
 
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different size of your chart title and positioning `(hjust = 1, size = 15)`.*
+
 ## Density chart
+
+In this section, will be plotting a density chart using `faithful` dataset.
 
 ```{r}
 #| warning: false
-library(gcookbook)
 library(ggplot2)
 library(tidyr)
 ```
+
+To start, we'll need to use the `tidyr` library to use the `faithful` dataset.
+
+```{r}
+faithful
+```
+
+A quick preview of `faithful` dataset.
 
 ```{r}
 #| warning: false
 ggplot(faithful, aes(x = waiting, y = ..density..)) +
   geom_density(fill = "blue", alpha = .2) +
-  xlim(35, 105) +
-  labs(title = "Density Chart",
+  xlim(35, 105) 
+```
+
+In this part of chart, `aes(x = waiting, y = ..density..)` specifies the aesthetics:
+
+- `x = waiting`: Assign `waiting` variable to the x-axis.
+- `y = ..density..`: Assign `..density..` variable to the y-axis. (`..density..` a special variable computed by `geom_density()`).
+
+`geom_density`:
+
+- Adds a density plot layer.
+- `geom_density` creates smooth continuous variable version of the histogram plot.
+
+Inside `geom_density` command, `fill = "blue", alpha = .2` specifies the following:
+
+- `fill = "blue"`: Assign color to the bar’s area using the color `"blue"`.
+- `alpha = .2`: Sets the transparency level for the bars to `.2`.
+
+`xlim(35, 105)`:
+
+- Sets the limits of the x-axis to the range `(35, 105)`.
+- Values outside this range are excluded from the plot.
+
+```{r, eval = FALSE}
+abs(title = "Density Chart",
        x = 'Waiting',
        y = 'Density',
        caption = 'By By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
+  theme(plot.title = element_text(hjust = 0.5, size = 20)) 
 ```
 
-```{r,eval = FALSE}
-library(gcookbook)
-library(ggplot2)
-library(tidyr)
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
 
-ggplot(faithful, aes(x = waiting, y = ..density..)) +
-  geom_density(fill = "blue", alpha = .2) +
-  xlim(35, 105) +
-  labs(title = "Density Chart",
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
+
+```{r, eval = FALSE}
+labs(title = 'Density Chart',
        x = 'Waiting',
        y = 'Density',
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
+       caption = 'By By Daven, DV, THU, 2024')
 ```
 
-## Histogram and Density chart
+Inside `labs()`:
 
-```{r}
-library(gcookbook)
-library(ggplot2)
-library(tidyr)
+- `title = 'Density Chart'`: To add "Density Chart" as the `title`.
+- `x = 'Waiting'`: Assign `'Waiting'` as the x-axis label.
+- `y = 'Density'`: Assign `'Density'` as the y-axis label.
+- `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
 
 ```{r}
 #| warning: false
-ggplot(faithful, aes(x = waiting, y = ..density..)) +
-  geom_histogram(fill = "cornsilk", colour = "grey60", size = .2) +
-  geom_density(fill = "blue", alpha = .2) +
-  xlim(35, 105) +
-  labs(title = "Density Chart",
-       x = 'Waiting',
-       y = 'Density',
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
-```
-
-```{r, eval = FALSE}
-library(gcookbook)
 library(ggplot2)
 library(tidyr)
 
 ggplot(faithful, aes(x = waiting, y = ..density..)) +
-  geom_histogram(fill = "cornsilk", colour = "grey60", size = .2) +
   geom_density(fill = "blue", alpha = .2) +
   xlim(35, 105) +
   labs(title = "Density Chart",
@@ -336,25 +759,95 @@ ggplot(faithful, aes(x = waiting, y = ..density..)) +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different colors on chart's curve like `'red'` or `'green'` as well as the size of your chart title and positioning `(hjust = 1, size = 15)`.*
+
 ## Box plot
 
+Our last section, will be plotting `ToothGrowth` dataset using a boxplot chart.
+
 ```{r}
 library(gcookbook)
 library(ggplot2)
 ```
 
+Here we need to initializes `ToothGrowth` dataset by using `gcookbook()` library within our code.
+
 ```{r}
-ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
-  geom_boxplot() +
-  labs(title = "Boxplot with ggplot",
-       x = 'Supp + Dose',
-       y = 'Length',
-       fill = "Smoking Status",
-       caption = 'By Daven, DV, THU, 2024') +
-  theme(plot.title = element_text(hjust = 0.5, size = 20))
+ToothGrowth
 ```
+
+A quick preview of `ToothGrowth` dataset.
+
+```{r}
+#| warning: false
+ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
+  geom_boxplot()
+```
+
+In this part of chart, `aes(x = interaction(supp, dose), y = len)` specifies the aesthetics:
+
+- `x = interaction(supp, dose)`: Assign `interaction(supp, dose)` variable to the x-axis label by combining levels of `supp` (VC or OJ) and `dose` ( 0.5, 1, or 2).
+- `y = len`: Assign `len` variable to the y-axis.
+
+`geom_boxplot()`:
+
+- Adds a boxplot layer to the plot.
+- `geom_boxplot` summarizes the distribution of `len` for each group defined by the interaction of `supp` and `dose`.
 
 ```{r, eval = FALSE}
+labs(title = "Boxplot with ggplot",
+       x = 'Supp + Dose',
+       y = 'Length',
+       fill = "Smoking Status",
+       caption = 'By Daven, DV, THU, 2024') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+To add more details on your chart, we can add `labs()` and `theme()` into our codes.
+
+`labs()`:
+
+-   Used to customized axis labels and legend titles.
+-   To add `title` and `caption` unto the chart.
+
+`theme()`:
+
+-   Used to give plots a consistent customized look.
+-   Positioning your chart `title` and adjusting the `size` of your chart font.
+
+```{r, eval = FALSE}
+labs(title = 'Boxplot with ggplot',
+       x = 'Supp + Dose',
+       y = 'Length',
+       fill = 'Smoking Status',
+       caption = 'By Daven, DV, THU, 2024')
+```
+
+Inside `labs()`:
+
+- `title = 'Boxplot with ggplot'`: To add "Boxplot with ggplot" as the `title`.
+- `x = 'Supp + Dose'`: Assign `'Supp + Dose'` as the x-axis label.
+- `y = 'Length'`: Assign `'Length'` as the y-axis label.
+- `fill = 'Smoking Status'`: Assign the legend `title` for the `fill` to `'Smoking Status'`.
+- `caption = 'By Daven, DV, THU, 2024'`: To add "By Daven, DV, THU, 2024" as the `caption`.
+
+```{r, eval = FALSE}
+theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+Inside `theme()`:
+
+-   `plot.title = element_text()`: To customize the `title` chart to your desire output.
+
+Inside `plot.title = element_text()`:
+
+-   `hjust = 0.5`: Positioning your chart `title` in the middle.
+-   `size = 20`: Sizing your title text to `size` 20.
+
+```{r}
+#| warning: false
 library(gcookbook)
 library(ggplot2)
 
@@ -368,3 +861,6 @@ ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
   theme(plot.title = element_text(hjust = 0.5, size = 20))
 ```
 
+For a better view of the overall explanation above, this is the complete structure on how the codes *given above* should be arranged.
+
+*Note: You can use different size of your chart title and positioning `(hjust = 1, size = 15)`.*

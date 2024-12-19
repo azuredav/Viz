@@ -7,7 +7,9 @@ library(gcookbook)
 library(ggplot2)
 library(dplyr)
 
-iris_plot <- ggplot(iris, aes(x=Sepal.Length, y = Sepal.Width))+
+iris_plot <- read.csv('iris.csv')
+
+iris_plot <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width))+
   geom_point() +
   facet_grid(. ~ Species) 
 

@@ -7,6 +7,8 @@ library(gcookbook)
 library(ggplot2)
 library(tidyr)
 
+setwd("D:\\Daven\\Univ\\RStudio\\Data Visualization Analysis\\Viz\\CSV")
+
 stocks <- read.csv("Stocks.csv")
 
 ggplot(stocks, aes(x = Price, y = ..density..)) +

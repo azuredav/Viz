@@ -7,6 +7,8 @@ library(gcookbook)
 library(ggplot2)
 library(tidyr)
 
+setwd("D:\\Daven\\Univ\\RStudio\\Data Visualization Analysis\\Viz\\CSV")
+
 jakarta <- read.csv('Jakarta.csv')
 
 jakarta_longer <- jakarta %>% pivot_longer(cols = c('Temperature', 'Humidity'),
