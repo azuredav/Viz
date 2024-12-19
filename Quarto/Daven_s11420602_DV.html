@@ -3428,7 +3428,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>in this part of chart, <code>aes (x = carat)</code>specifies the aesthetics:</p>
+<p>in this part of chart, <code>aes (x = carat)</code> specifies the aesthetics:</p>
 <ul>
 <li><code>x = carat</code>: Assign the <code>carat</code> variable to the x-axis.</li>
 </ul>
@@ -3784,7 +3784,7 @@ vertical-align: -.125em;
 <li>Positioning your chart <code>title</code> and adjusting the <code>size</code> of your chart font.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Age and Height by Gender&quot;</span>,</span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Age and Height&quot;</span>,</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">&#39;Age (Year)&#39;</span>,</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">&#39;Height (Inch)&#39;</span>,</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">&#39;By Daven, DV, THU, 2024&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4376,7 +4376,8 @@ vertical-align: -.125em;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>birthwt_mod <span class="ot">&lt;-</span> birthwt</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>birthwt_mod<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">recode_factor</span>(birthwt_mod<span class="sc">$</span>smoke, <span class="st">&#39;0&#39;</span> <span class="ot">=</span> <span class="st">&#39;No Smoke&#39;</span>, <span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&#39;Smoke&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>birthwt_mod<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">recode_factor</span>(birthwt_mod<span class="sc">$</span>smoke, </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&#39;0&#39;</span> <span class="ot">=</span> <span class="st">&#39;No Smoke&#39;</span>, <span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&#39;Smoke&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Before proceeding we need to make another copy the dataset make some modification into it.</p>
 <p><code>birthwt_mod &lt;- birthwt</code>:</p>
@@ -4462,15 +4463,16 @@ vertical-align: -.125em;
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>birthwt_mod <span class="ot">&lt;-</span> birthwt</span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>birthwt_mod<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">recode_factor</span>(birthwt_mod<span class="sc">$</span>smoke, <span class="st">&#39;0&#39;</span> <span class="ot">=</span> <span class="st">&#39;No Smoke&#39;</span>, <span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&#39;Smoke&#39;</span>) </span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt_mod, <span class="fu">aes</span>(<span class="at">x =</span> bwt, <span class="at">fill =</span> smoke)) <span class="sc">+</span></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Birth Weight&quot;</span>,</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Birth Weight&#39;</span>,</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Count&#39;</span>,</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&#39;By By Daven, DV, THU, 2024&#39;</span>) <span class="sc">+</span></span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">20</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>birthwt_mod<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">recode_factor</span>(birthwt_mod<span class="sc">$</span>smoke, </span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&#39;0&#39;</span> <span class="ot">=</span> <span class="st">&#39;No Smoke&#39;</span>, <span class="st">&#39;1&#39;</span> <span class="ot">=</span> <span class="st">&#39;Smoke&#39;</span>) </span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt_mod, <span class="fu">aes</span>(<span class="at">x =</span> bwt, <span class="at">fill =</span> smoke)) <span class="sc">+</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Birth Weight&quot;</span>,</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Birth Weight&#39;</span>,</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Count&#39;</span>,</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&#39;By By Daven, DV, THU, 2024&#39;</span>) <span class="sc">+</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">20</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -4955,7 +4957,7 @@ vertical-align: -.125em;
 </div>
 <p>In this part of chart, <code>aes(x = interaction(supp, dose), y = len)</code> specifies the aesthetics:</p>
 <ul>
-<li><code>x = interaction(supp, dose)</code>: Assign <code>interaction(supp, dose)</code> variable to the x-axis label by combining levels of <code>supp</code> (VC or OJ) and <code>dose</code> ( 0.5, 1, or 2).</li>
+<li><code>x = interaction(supp, dose)</code>: Assign <code>interaction(supp, dose)</code> variable to the x-axis label by combining levels of <code>supp</code> (VC or OJ) and <code>dose</code> (0.5, 1, or 2).</li>
 <li><code>y = len</code>: Assign <code>len</code> variable to the y-axis.</li>
 </ul>
 <p><code>geom_boxplot()</code>:</p>

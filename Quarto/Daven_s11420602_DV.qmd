@@ -261,7 +261,7 @@ ggplot(diamonds, aes (x = carat)) +
   geom_histogram() 
 ```
 
-in this part of chart, `aes (x = carat)`specifies the aesthetics:
+in this part of chart, `aes (x = carat)` specifies the aesthetics:
 
 -   `x = carat`: Assign the `carat` variable to the x-axis.
 
@@ -379,7 +379,7 @@ To add more details on your chart, we can add `labs()` and `theme()` into our co
 -   Positioning your chart `title` and adjusting the `size` of your chart font.
 
 ```{r, eval = FALSE}
-labs(title = "Age and Height by Gender",
+labs(title = "Age and Height",
      x = 'Age (Year)',
      y = 'Height (Inch)',
      caption = 'By Daven, DV, THU, 2024')
@@ -541,7 +541,8 @@ A quick preview of the `birthwt` dataset.
 ```{r}
 birthwt_mod <- birthwt
 
-birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke')
+birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, 
+                                   '0' = 'No Smoke', '1' = 'Smoke')
 ```
 
 Before proceeding we need to make another copy the dataset make some modification into it.
@@ -636,7 +637,8 @@ library(tidyverse)
 
 birthwt_mod <- birthwt
 
-birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, '0' = 'No Smoke', '1' = 'Smoke') 
+birthwt_mod$smoke <- recode_factor(birthwt_mod$smoke, 
+                                   '0' = 'No Smoke', '1' = 'Smoke') 
 
 ggplot(birthwt_mod, aes(x = bwt, fill = smoke)) +
   geom_histogram(position = "identity", alpha = 0.4) +
@@ -788,7 +790,7 @@ ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
 
 In this part of chart, `aes(x = interaction(supp, dose), y = len)` specifies the aesthetics:
 
-- `x = interaction(supp, dose)`: Assign `interaction(supp, dose)` variable to the x-axis label by combining levels of `supp` (VC or OJ) and `dose` ( 0.5, 1, or 2).
+- `x = interaction(supp, dose)`: Assign `interaction(supp, dose)` variable to the x-axis label by combining levels of `supp` (VC or OJ) and `dose` (0.5, 1, or 2).
 - `y = len`: Assign `len` variable to the y-axis.
 
 `geom_boxplot()`:
